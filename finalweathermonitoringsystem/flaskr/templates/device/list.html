@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+    <table class="table table-bordered table-hover">
+        <thead class="thead-light">
+        <tr>
+            <th>지역명</th>
+            <th>지역별 날씨감지 API KEY</th>
+            <th>지역 날씨 모니터링</th>
+            <th>등록자</th>
+            <th>등록일시</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for device in devices %}
+        <tr>
+            <td><a href="{{ url_for('device.view', id=device['id']) }}">{{ device['name'] }}</a></td>
+            <td>{{ device['api_key'] }}</td>
+            <td><a href="{{ url_for('monitoring.lists', id=device['id']) }}">모니터링</a></td>
+            <td>{{ device['username'] }}</td>
+            <td>{{ device['created'] }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

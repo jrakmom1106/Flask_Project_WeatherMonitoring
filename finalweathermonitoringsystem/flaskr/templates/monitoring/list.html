@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+    <table class="table table-bordered table-hover">
+        <thead class="thead-light">
+        <tr>
+            <th>미세먼지 지수</th>
+            <th>습도</th>
+            <th>온도</th>
+            <th>일조량</th>
+            <th>우천여부</th>
+
+            <th>시간</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for monitoring in monitorings %}
+        <tr>
+
+            <td>{{ monitoring['dust_ratio'] }} %</td>
+            <td>{{ monitoring['h_ratio'] }} %</td>
+            <td>{{ monitoring['t_ratio'] }} C</td>
+            <td>{{ monitoring['lux'] }}</td>
+            <td>{{ monitoring['weather'] }}</td>
+            <td>{{ monitoring['created'] }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
